@@ -4,7 +4,7 @@ const userController = {
   getAllUser(req, res) {
     User.find({})
       .populate({
-        path: "thoughts",
+        path: "users",
         select: "-__v",
       })
       .select("-__v")
@@ -18,7 +18,7 @@ const userController = {
   getUserById({ params }, res) {
     User.findOne({ _id: params.id })
       .populate({
-        path: "thoughts",
+        path: "users",
         select: "-__v",
       })
       .select("-__v")
@@ -34,11 +34,13 @@ const userController = {
         res.status(500).json(err);
       });
   },
+
   createUser({ body }, res) {
     User.create(body)
       .then((dbUserData) => res.json(dbUserData))
       .catch((err) => res.json(err));
   },
+
   updateUser({ params, body }, res) {
     User.findOneAndUpdate({ _id: params.id }, body, {
       new: true,
@@ -53,6 +55,7 @@ const userController = {
       })
       .catch((err) => res.status(500).json(err));
   },
+
   deleteUser({ params }, res) {
     User.findOneAndDelete({ _id: params.id })
       .then((dbUserData) => {
@@ -65,7 +68,7 @@ const userController = {
       .catch((err) => res.status(500).json(err));
   },
 
-  // FRIEND STUFF
+  // Write API route for adding a Friend
   addFriend({ params }, res) {
     User.findOneAndUpdate(
       { _id: params.id },
@@ -81,6 +84,8 @@ const userController = {
       })
       .catch((err) => res.json(err));
   },
+
+  //Write API route for deleting a friend
   deleteFriend({ params }, res) {
     User.findOneAndUpdate(
       { _id: params.id },
