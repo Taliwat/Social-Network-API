@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-
+const reactionSchema = require('./reaction')
 
 const thoughtSchema = new mongoose.Schema({
     thoughtText: { type: String,
@@ -14,10 +14,7 @@ const thoughtSchema = new mongoose.Schema({
         }},
     username: { type: String,
         reuiqred: true},
-    reactions: { type: Array,
-        reference: {
-            model: reactionSchema
-        }}
+    reactions: [reactionSchema]
 });
 
 thoughtSchema
