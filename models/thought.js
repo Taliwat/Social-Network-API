@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 const reactionSchema = require('./reaction')
 
+//create new Mongoose Schema for the Thoughts with the data given in the example.
 const thoughtSchema = new mongoose.Schema({
     thoughtText: { type: String,
         required: true,

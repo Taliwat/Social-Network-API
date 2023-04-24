@@ -1,5 +1,6 @@
 const { User, Thought } = require("../models")
 
+//write all necessary API calls for the Thoughts
 const thoughtController = {
     getAllThought(req, res) {
             Thought.find({})
