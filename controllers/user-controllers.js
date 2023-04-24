@@ -1,5 +1,6 @@
 const { User } = require("../models");
 
+//write all necessary User API calls 
 const userController = {
   getAllUser(req, res) {
     User.find({})
